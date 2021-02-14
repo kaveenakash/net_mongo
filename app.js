@@ -23,20 +23,25 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  res.render('index');
+    const blogs = [
+        {title:'Yoshi finds eggs',snippet:'Lorem ipsum dolor sit amet consectrir'},
+        {title:'Mario find stars',snippet:'Lorem ipsum dolor sit amet consectrir'},
+        {title:'How to defeat browser',snippet:'Lorem ipsum dolor sit amet consectrir'}
+    ]
+  res.render('index',{title:'Home',blogs});
 });
 
 app.get("/about", (req, res) => {
-  res.render('about');
+  res.render('about',{title:'About'});
 });
 
-app.get('blogs/create',(req,res) =>{
-    
+app.get('/blogs/create',(req,res) =>{
+    res.render('create',{title:'Create'})
 })
 
 // 404 page
 app.use((req,res) =>{
-    res.status(404).render('404');
+    res.status(404).render('404',{title:404});
 })
 
 
